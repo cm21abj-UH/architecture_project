@@ -1,17 +1,13 @@
 package arcitectureproject.sports_project;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileWriter; 
 import java.util.Scanner;
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class management {
-    protected int[] CompetitorList;
+public class management {  
+    protected String CompetitorList[];
     protected String fileName;
-    
-    public int[] initArray() {
-        CompetitorList = new int[9]; //despite the number, this is actually 10 entries
-        return CompetitorList;
-    }
     
     /*
     NOTE: FILE MUST BE PLACED IN PROJECT FOLDER!
@@ -38,17 +34,45 @@ public class management {
         fileName = getFile.nextLine();
         return fileName;
     }
-    
-    public void makeReport(String fileName) { //creates the text file with the report
+
+    public void updateList (String fileName, String[] CompetitorList) {
+        ArrayList<String> CompList = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File("RunCompetitor.csv"));
-            
-            while (fileReader.hasNextLine()) {
-                System.out.println(fileReader.nextLine()); 
+            Scanner readFile = new Scanner(new File(fileName));
+            while (readFile.hasNextLine()) {
+                CompList.add(readFile.nextLine());
             }
+            readFile.close();
+            System.out.println(CompList);
         }
         catch (IOException e) {
-            System.out.println("Couldn't print file");
+            System.out.println("Failed to modify arraylist.");
         }
+    }
+    
+    public void makeReport (String fileName, String[] CompetitorList) {
+        try {
+            Scanner readFile = new Scanner(new File(fileName));
+            File reportFile = new File("report.txt");
+            if (reportFile.createNewFile()) {
+                System.out.println("Created file '" + reportFile.getName() + "'");
+            }
+            else {
+                System.out.println("A file by this name already exists! Please delete or move it, and try again.");
+            }
+
+            FileWriter reportWriter = new FileWriter("report.txt");
+            while (readFile.hasNextLine()) {
+                System.out.println(readFile.nextLine()); 
+                reportWriter.write(readFile.nextLine()); //writes contestant info into txt file
+                reportWriter.write('\n'); //seperates contestant information by line
+            }
+            reportWriter.write("");
+            readFile.close();
+            reportWriter.close(); //closes their respective files
+        }
+        catch (IOException e) {
+            System.out.println("Couldn't make file.");
+        }  
     }
 }
