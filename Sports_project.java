@@ -9,7 +9,7 @@ public class Sports_project {
         //compInfo.getOverallScore(compInfo.Scores);
         //compInfo.getFullDetails();
         manager.getFile();
-        manager.makeReport(manager.fileName); //prints file
+        manager.updateList(manager.fileName, manager.CompetitorList);
+        manager.makeReport(manager.fileName, manager.CompetitorList); //prints file
     }
 }
-
