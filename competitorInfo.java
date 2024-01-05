@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class competitorInfo {
     
-    String Name = "name";
-    Integer Age = 1;
-    String Country = "swag";
-    String Level = "Novice";
-    Integer CompNumber = 017;
+    String Name = "";
+    Integer Age = 0;
+    String Country = "";
+    String Level = "";
+    Integer CompNumber = 0;
     protected int[] Scores = {0, 1, 2, 3, 4, 5};
     
     public void getCompetitorInfo(String[] args) {
