@@ -1,3 +1,7 @@
+/*
+Carter Marshall
+cm21aj@herts.ac.uk
+*/
 package arcitectureproject.sports_project;
 import java.util.Scanner; //gets the package for scanners, which are needed for input information
 import java.util.Random;
