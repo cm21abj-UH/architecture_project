@@ -1,12 +1,17 @@
+/*
+Carter Marshall
+cm21aj@herts.ac.uk
+*/
 package arcitectureproject.sports_project;
 import java.io.File;
+import java.util.List;
 import java.io.FileWriter; 
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class management {  
-    protected String CompetitorList[];
+    protected List<String> CompList;
     protected String fileName;
     
     /*
@@ -35,8 +40,8 @@ public class management {
         return fileName;
     }
 
-    public void updateList (String fileName, String[] CompetitorList) {
-        ArrayList<String> CompList = new ArrayList<String>();
+    public void updateList (String fileName) {
+        CompList = new ArrayList<String>();
         try {
             Scanner readFile = new Scanner(new File(fileName));
             while (readFile.hasNextLine()) {
@@ -50,7 +55,11 @@ public class management {
         }
     }
     
-    public void makeReport (String fileName, String[] CompetitorList) {
+    public List<String> getList () {
+        return CompList;
+    }
+    
+    public void makeReport (String fileName) {
         try {
             Scanner readFile = new Scanner(new File(fileName));
             File reportFile = new File("report.txt");
@@ -69,7 +78,12 @@ public class management {
             }
             reportWriter.write("");
             readFile.close();
-            reportWriter.close(); //closes their respective files
+            reportWriter.close(); //closes their respective files/functions
+            
+            /*
+            TODO: more file output stuff
+            add comp number input
+            */ 
         }
         catch (IOException e) {
             System.out.println("Couldn't make file.");
