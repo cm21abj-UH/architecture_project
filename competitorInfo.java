@@ -8,12 +8,12 @@ import java.util.Random;
 
 public class competitorInfo {
     
-    String Name = "";
-    Integer Age = 0;
-    String Country = "";
-    String Level = "";
-    Integer CompNumber = 0;
-    protected int[] Scores = {0, 1, 2, 3, 4, 5};
+    private String Name = "";
+    private int Age = 0;
+    private String Country = "";
+    private String Level = "";
+    private int CompNumber = 0;
+    private int[] Scores = {0, 1, 2, 3, 4, 5};
     
     public void getCompetitorInfo(String[] args) {
 
@@ -62,8 +62,52 @@ public class competitorInfo {
         CompNumber = rand.nextInt(999);
     } 
     
+    public String getName() {
+        return Name;
+    }
+    
+    public void setName(String newName) {
+        this.Name = newName;
+    }
+    
+    public int getAge() {
+        return Age;
+    }
+    
+    public void setAge(int newAge) {
+        this.Age = newAge;
+    }
+    
+    public String getCountry() {
+        return Country;
+    }
+    
+    public void setCountry(String newCountry) {
+        this.Country = newCountry;
+    }
+    
+    public String getLevel() {
+        return Level;
+    }
+    
+    public void setLevel(String newLevel) {
+        this.Level = newLevel;
+    }
+    
+    public int getCompNumber() {
+        return CompNumber;
+    }
+    
+    public void setCompNumber(int newCompNumber) {
+        this.CompNumber = newCompNumber;
+    }
+    
     public int[] getScoreArray() { //sets and returns the array
         return Scores.clone();
+    }
+    
+    public void setScoreArray(int[] newScoreArray) {
+        this.Scores = newScoreArray;
     }
     
     public double getOverallScore(int[] Scores) {
