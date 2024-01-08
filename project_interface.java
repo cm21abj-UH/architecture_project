@@ -6,19 +6,33 @@ package arcitectureproject.sports_project;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JFileChooser;
+import java.io.File;
+import java.util.ArrayList;
 
 public class project_interface {
+    management manager = new management();
+    JList CompetitorData;
+    
+    public String fileSet;
     JFrame Frame;
-    JButton TestButton;
+
+    JScrollPane listScroller;
+    
     public void PanelMain() {
-       JFrame Frame = new JFrame("hello"); 
-       JButton TestButton = new JButton("hello");
-       //TestButton.setBounds(100, 100, 100, 100);
-       
-       //Frame.add(TestButton);
-       
-       Frame.setSize(400, 500);
-       Frame.setLayout(null);
-       Frame.setVisible(true);
+        JFrame Frame = new JFrame("Manager"); 
+
+        JScrollPane listScroller = new JScrollPane(CompetitorData);
+        Frame.add(listScroller);
+
+        Frame.setSize(400, 500);
+        Frame.setLayout(null);
+        Frame.setVisible(true);
     }
+    
+    /*public void RetrieveCompList() {
+        this.manager.CompList = new ArrayList<>();
+        JList CompetitorData = new JList(manager.CompList.getList());
+        System.out.println(manager.CompList);
+    }*/
 }
