@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class management {  
-    protected List<String> CompList;
-    protected String fileName;
+    private List<String> CompList;
+    private String fileName;
     
     /*
     NOTE: FILE MUST BE PLACED IN PROJECT FOLDER!
@@ -33,14 +33,21 @@ public class management {
                             +-management.java
                             etc..
     */
-    public String getFile() {
-        System.out.println("provide a file containing competitor information: ");
+    public void promptFile() {
+        System.out.println("Provide a file containing competitor information: ");
         Scanner getFile = new Scanner(System.in);
         fileName = getFile.nextLine();
+    }
+    
+    public String getFile() { //getter
         return fileName;
     }
+    
+    public void setFile(String newFile) { //setter
+        this.fileName = newFile;
+    }
 
-    public void updateList (String fileName) {
+    public void updateList(String fileName) {
         CompList = new ArrayList<String>();
         try {
             Scanner readFile = new Scanner(new File(fileName));
@@ -48,15 +55,18 @@ public class management {
                 CompList.add(readFile.nextLine());
             }
             readFile.close();
-            System.out.println(CompList);
         }
-        catch (IOException e) {
+        catch (IOException e) { //error if a file can't be found or written to
             System.out.println("Failed to modify arraylist.");
         }
     }
     
-    public List<String> getList () {
+    public List<String> getList() {
         return CompList;
+    }
+    
+    public void setList(List<String> newCompList) {
+        this.CompList = newCompList;
     }
     
     public void makeReport (String fileName) {
@@ -72,7 +82,7 @@ public class management {
 
             FileWriter reportWriter = new FileWriter("report.txt");
             while (readFile.hasNextLine()) {
-                System.out.println(readFile.nextLine()); 
+                //System.out.println(readFile.nextLine()); //prints file info (debug code)
                 reportWriter.write(readFile.nextLine()); //writes contestant info into txt file
                 reportWriter.write('\n'); //seperates contestant information by line
             }
@@ -88,5 +98,9 @@ public class management {
         catch (IOException e) {
             System.out.println("Couldn't make file.");
         }  
+    }
+    public void openPanel() {
+        project_interface ui = new project_interface();
+        ui.PanelMain();
     }
 }
