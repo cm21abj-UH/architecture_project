@@ -13,19 +13,19 @@ public class Sportsproject_revamp {
         competitor_list complist = new competitor_list();
         
 
-        //manager.getFile();
-        //manager.outputFile();
-        //!!!everything below is a class test!!!
+        manager.getFile();
+
+        /*!!!everything below is a class test!!!
         footballPlayer.setAge(22);
         footballPlayer.setCompNumber(555);
         footballPlayer.setCountry("UK");
         footballPlayer.setLevel("Novice");
         footballPlayer.setName("Cool Name");
         footballPlayer.getOverallScore();
-        //!!!everything above is a class test!!!
+        !!!everything above is a class test!!!*/
 
         complist.setCompList();
-        complist.setListAlt();
+        complist.setList();
         complist.prntList();
         footballPlayer.getFullDetails();
         //manager.outputFile();
