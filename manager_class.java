@@ -3,15 +3,13 @@ Carter Marshall
 cm21aj@herts.ac.uk
 */
 package arcitectureproject.sportsproject_revamp;
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
     /*
@@ -88,54 +86,25 @@ class manager_class {
     }
 };
 
-class competitor_list extends manager_class {
-    private ArrayList<String[]> CompetitorList;
+class competitor_list extends footballer {
+    //footballer fball = new footballer();
     manager_class manager = new manager_class();
-    ArrayList<String> CompNum = new ArrayList<>();
-    ArrayList<String> CompName = new ArrayList<>();
-    ArrayList<String> CompAge = new ArrayList<>();
-    ArrayList<String> CompCountry = new ArrayList<>();
-    ArrayList<String> CompScoresR1 = new ArrayList<>();
-    ArrayList<String> CompScoresR2 = new ArrayList<>();
-    ArrayList<String> CompScoresR3 = new ArrayList<>();
-    ArrayList<String> CompScoresR4 = new ArrayList<>();
+    private ArrayList<String[]> CompetitorList;
 
     public void setCompList() {
-        this.CompetitorList = new ArrayList<>();
+        this.CompetitorList = new ArrayList<String[]>(10);
     }
     
-    /*public void setList() {
-        manager.setFile();
-        try (BufferedReader br = new BufferedReader(new FileReader(manager.fileName))){
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] s = line.split(",");
-                CompetitorList.add(s);
-            }
-        }
-        catch (IOException e) { //error if a file can't be found or written to
-            System.out.println(e);
-        }
-    }*/
-    
-    public void setListAlt() throws FileNotFoundException {
+    public void setList() throws FileNotFoundException {
         String[] record = new String[2];
         manager.setFile();
         Scanner scan = new Scanner(new File(manager.fileName));
         while (scan.hasNext()) {
             record = scan.nextLine().split(",");
-            CompNum.add(record[0]);
-            CompName.add(record[1]);
-            CompAge.add(record[2]);
-            CompCountry.add(record[4]);
-            CompScoresR1.add(record[5]);
-            CompScoresR2.add(record[6]);
-            CompScoresR3.add(record[7]);
-            CompScoresR4.add(record[8]);
             CompetitorList.add(record);
         }
     }
-    
+
     public ArrayList<String[]> getList() {
         return CompetitorList;
     }
@@ -143,14 +112,6 @@ class competitor_list extends manager_class {
     public void prntList() {
         for (int i = 0; i < CompetitorList.size(); i++) {
             System.out.println(Arrays.toString(CompetitorList.get(i))); //prints the arraylist for debugging purposes
-            System.out.println(CompNum.get(i));
-            System.out.println(CompName.get(i));
-            System.out.println(CompAge.get(i));
-            System.out.println(CompCountry.get(i));
-            System.out.println(CompScoresR1.get(i));
-            System.out.println(CompScoresR2.get(i));
-            System.out.println(CompScoresR3.get(i));
-            System.out.println(CompScoresR4.get(i));
         }
     }
 }
