@@ -5,13 +5,13 @@ cm21aj@herts.ac.uk
 package arcitectureproject.sportsproject_revamp;
 
 class footballer {
-    private String Name;
-    private int Age;
-    private String Country;
-    private String Level;
-    private int CompNumber;  
-    private double AverageScore;
-    private int[] Scores = {5, 3, 3, 2};
+    protected String Name;
+    protected int Age;
+    protected String Country;
+    protected String Level;
+    protected int CompNumber;  
+    protected double AverageScore;
+    protected int[] Scores = {1, 2, 3, 4}; //score example
     
     public void setName(String sName) {
         Name = sName;
@@ -70,7 +70,11 @@ class footballer {
     }
     
     public void getShortDetails() {
-        //
+        System.out.println("CN " + CompNumber + " (placeholder initials) " + "has overall score of " + AverageScore);
     }   
-}
+    
+    public int[] getScoreArray() {
+        return Scores;
+    }
+} 
 
