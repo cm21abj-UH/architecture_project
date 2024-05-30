@@ -40,6 +40,10 @@ class manager_class {
         fileName = getFile.nextLine();
     }
     
+    //public void openGUI() {
+    //    ui.FrameMain();
+    //}
+    
     public String getFile() {
         return fileName;
     }
@@ -47,7 +51,7 @@ class manager_class {
     public void outputFile() {
         //competitor_list complist = new competitor_list();
         try {
-            Scanner readFile = new Scanner(new File(fileName));
+            Scanner readFile = new Scanner(new File(getFile()));
             File reportFile = new File("report.txt");
             if (reportFile.createNewFile()) {
                 System.out.println("Created file 'report.txt'");
@@ -75,10 +79,6 @@ class manager_class {
             reportWriter.write("placeholder \n");
             readFile.close();
             reportWriter.close(); //closes their respective files/functions
-            
-            /*
-            add comp number input
-            */ 
         }
         catch (IOException e) {
             System.out.println("Couldn't make file.");
@@ -87,20 +87,33 @@ class manager_class {
 };
 
 class competitor_list extends footballer {
-    //footballer fball = new footballer();
+    footballer fball = new footballer();
     manager_class manager = new manager_class();
-    private ArrayList<String[]> CompetitorList;
+    protected ArrayList<String[]> CompetitorList;
+    //private ArrayList<Object> CompetitorList;
 
     public void setCompList() {
-        this.CompetitorList = new ArrayList<String[]>(10);
+        this.CompetitorList = new ArrayList<>(10);
     }
+    
+    //public void setCompList2() {
+    //    this.CompetitorList = new ArrayList<>(Arrays.asList(fball.CompNumber, fball.Name, fball.Age, fball.Country, fball.Scores[0], fball.Scores[1], fball.Scores[2], fball.Scores[3]));
+    //} //an attempt at making the competitor list arraylist more versatile by including objects from the footballer class
     
     public void setList() throws FileNotFoundException {
         String[] record = new String[2];
         manager.setFile();
-        Scanner scan = new Scanner(new File(manager.fileName));
+        Scanner scan = new Scanner(new File(manager.getFile()));
         while (scan.hasNext()) {
             record = scan.nextLine().split(",");
+            /*CompetitorList.add(record[0]);
+            CompetitorList.add(record[1]);
+            CompetitorList.add(record[2]);
+            CompetitorList.add(record[4]);
+            CompetitorList.add(record[5]);
+            CompetitorList.add(record[6]);
+            CompetitorList.add(record[7]);
+            CompetitorList.add(record[8]);*/
             CompetitorList.add(record);
         }
     }
